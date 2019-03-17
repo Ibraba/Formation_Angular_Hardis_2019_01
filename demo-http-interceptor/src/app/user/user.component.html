@@ -1,5 +1,37 @@
-<p>
-  user works!
-</p>
+<div class="container">
+    <p>
+        user works!
+      </p>
+      
+      <button (click)="getRequest()">Make request</button>     
+</div>
+<!-- <div>
+    auth.userName invalid ==> {{modelForm?.form.value}}
+    <br>
+    submitted ==> {{modelForm?.submitted}}
+</div> -->
 
-<button (click)="getRequest()">Make request</button>
+<div ngModelGroup="auth">
+    <div class="form-group">
+        <span>submitted ==>: {{submitted}}</span>
+        <label>User Name in user component</label>
+        <input type="text" name="userName" class="form-control"
+        [(ngModel)]="formUser.userName" #userName="ngModel" required>
+        <span *ngIf="(userName.touched && userName.invalid) || (submitted && userName.invalid)">
+          User Name in user component: is required.
+        </span> 
+    </div>
+    <!-- <div class="form-group">
+        <label>User MDP in user component</label>
+        <input type="text" name="userMdp" class="form-control"
+        ngModel required #userNameSpy>
+    </div> -->
+</div>
+
+<!-- <div class="form-group">
+    <label>User Name</label>
+    <input type="text" name="userName" class="form-control"
+    #userName="ngModel" [(ngModel)]="formUser.userName" required #userNameSpy>
+    <span [hidden]="userName.valid || userName.pristine">userName Name</span>
+    <span>userNameSpy {{userNameSpy.value}} Name</span>
+  </div> -->
